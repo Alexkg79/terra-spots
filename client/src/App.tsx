@@ -5,13 +5,39 @@ import './App.css'
 
 function App() {
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-blue-900 to-purple-900">
-      <div className="absolute top-4 left-4 z-10 text-white">
-        <h1 className="text-3xl font-bold">Terra Spots</h1>
-        <p className="text-lg opacity-80">Explorez le monde en 3D</p>
+    <div style={{ 
+      position: 'fixed', 
+      top: 0, 
+      left: 0, 
+      width: '100vw', 
+      height: '100vh',
+      overflow: 'hidden'
+    }}>
+      {/* Header par-dessus le canvas */}
+      <div style={{
+        position: 'absolute',
+        top: '20px',
+        left: '20px',
+        zIndex: 1000,
+        color: 'white'
+      }}>
+        <h1 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0 }}>
+          Terra Spots
+        </h1>
+        <p style={{ fontSize: '1.2rem', opacity: 0.8, margin: 0 }}>
+          Explorez le monde en 3D
+        </p>
       </div>
       
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+      {/* Canvas en plein écran */}
+      <Canvas 
+        style={{ 
+          width: '100vw', 
+          height: '100vh',
+          background: 'linear-gradient(135deg, #1e3a8a, #581c87)'
+        }}
+        camera={{ position: [0, 0, 4], fov: 60 }}
+      >
         <ambientLight intensity={0.3} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <Globe />

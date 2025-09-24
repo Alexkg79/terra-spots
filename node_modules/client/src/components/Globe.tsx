@@ -6,7 +6,6 @@ import { Mesh } from 'three'
 function Globe() {
   const meshRef = useRef<Mesh>(null!)
   
-  // Texture de la Terre (image gratuite)
   const earthTexture = useLoader(
     TextureLoader, 
     'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
@@ -19,7 +18,7 @@ function Globe() {
   })
 
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} position={[0, -0.2, 0]}>
       <sphereGeometry args={[2, 64, 64]} />
       <meshStandardMaterial 
         map={earthTexture}
